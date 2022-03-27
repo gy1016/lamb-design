@@ -1,7 +1,7 @@
 {
   "name": "lamb-design",
-  "version": "0.1.1",
-  "description": "React Components",
+  "version": "0.1.2",
+  "description": "React Components library",
   "author": "lamb",
   "license": "MIT",
   "keywords": [
@@ -21,18 +21,6 @@
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
-    "axios": "^0.24.0",
-    "classnames": "^2.3.1",
-    "react-transition-group": "^4.4.2"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
   "scripts": {
     "prepare": "husky install",
     "start": "react-scripts start",
@@ -43,7 +31,7 @@
     "test:nowatch": "cross-env CI=true react-scripts test",
     "eject": "react-scripts eject",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
+    "build-css": "sass ./src/styles/index.scss ./dist/index.css",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "prepublishOnly": "npm run test:nowatch && npm run lint && npm run build"
@@ -76,7 +64,21 @@
       "last 1 safari version"
     ]
   },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "axios": "^0.24.0",
+    "classnames": "^2.3.1",
+    "react-transition-group": "^4.4.2"
+  },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
     "@storybook/addon-actions": "^6.4.9",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
@@ -93,12 +95,12 @@
     "@types/react-transition-group": "^4.4.4",
     "cross-env": "^7.0.3",
     "husky": "^7.0.4",
-    "node-sass": "^4.14.1",
     "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "rimraf": "^3.0.2",
+    "sass": "^1.49.9",
     "typescript": "^4.1.2"
   }
 }

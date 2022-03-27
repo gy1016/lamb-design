@@ -1,5 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+
 library.add(fas);
 
 export { default as Button } from './components/Button';
@@ -10,3 +11,9 @@ export { default as Input } from './components/Input';
 export { default as Progress } from './components/Progress';
 export { default as Transition } from './components/Transition';
 export { default as Upload } from './components/Upload';
+export { default as Carousel } from './components/Carousel';
+
+// ReactDOM.render(
+//   <Carousel imgArr={imgArr} timeout={2000} />,
+//   document.getElementById('root')
+// );

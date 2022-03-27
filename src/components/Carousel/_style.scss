@@ -1,0 +1,55 @@
+.lamb-carousel-component {
+  width: 400px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  #carousel-banner {
+    padding: 0;
+    margin: 0;
+    width: 500%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+    transition: 0.4s;
+
+    li {
+      width: 20%;
+      height: 100%;
+    }
+  }
+
+  ul li img {
+    width: 100%;
+  }
+
+  #carousel-pre {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid #e5e5e5;
+    border-right: transparent;
+    border-bottom: transparent;
+    transform: rotate(-45deg);
+  }
+
+  #carousel-next {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid #e5e5e5;
+    border-left: transparent;
+    border-bottom: transparent;
+    transform: rotate(45deg);
+  }
+}
