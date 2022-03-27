@@ -1,0 +1,38 @@
+name: lamb-design
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install and Build
+        run: |
+          npm install
+          npm run build-storybook
+          cd storybook-static
+          tar --exclude=stats.json -czvf storybook-static.tar *
+      - name: Deploy
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        env:
+          WELCOME: "ssh scp ssh pipelines"
+          LASTSSH: "Doing something after copying"
+        with:
+          host: ${{ secrets.DR_HOST }}
+          user: ${{ secrets.DR_USER }}
+          key: ${{ secrets.DR_KEY }}
+          connect_timeout: 10s
+          first_ssh: |
+            rm -rf /www/wwwroot/projects/lambdesign
+            mkdir -p /www/wwwroot/projects/lambdesign
+          scp: |
+            ./storybook-static/storybook-static.tar => /www/wwwroot/projects/lambdesign
+          last_ssh: |
+            cd /www/wwwroot/projects/lambdesign
+            tar -xzvf storybook-static.tar
+            rm storybook-static.tar
