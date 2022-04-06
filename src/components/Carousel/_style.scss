@@ -11,14 +11,12 @@
   #carousel-banner {
     padding: 0;
     margin: 0;
-    width: 500%;
     height: 100%;
     display: flex;
     list-style: none;
     transition: 0.4s;
 
     li {
-      width: 20%;
       height: 100%;
     }
   }

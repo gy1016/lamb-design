@@ -51,7 +51,7 @@ export var Carousel = function (props) {
                 clearInterval(timer.current);
             }, onMouseLeave: animation }, imgArr.map(function (img, idx) { return (React.createElement("li", { key: img.id },
             React.createElement("img", { src: img.src, alt: img.name }))); })),
-        React.createElement("div", { id: "carousel-pre", ref: preRef, onClick: getNext }),
-        React.createElement("div", { id: "carousel-next", ref: nextRef, onClick: getPre })));
+        React.createElement("div", { id: "carousel-pre", ref: preRef, onClick: getPre }),
+        React.createElement("div", { id: "carousel-next", ref: nextRef, onClick: getNext })));
 };
 export default Carousel;

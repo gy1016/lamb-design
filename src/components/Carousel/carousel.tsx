@@ -21,24 +21,24 @@ export const Carousel: FC<CarouselProps> = (props) => {
   const preRef = useRef<HTMLDivElement>(null);
   const nextRef = useRef<HTMLDivElement>(null);
 
-  const next = () => {
+  const next = useCallback(() => {
     firstLi.current = ulRef.current!.children[0];
     ulRef.current!.style.transition = '0.4s';
-    ulRef.current!.style.transform = `translateX(${-20}%)`;
+    ulRef.current!.style.transform = `translateX(${-100 / imgArr.length}%)`;
     const tmp = setTimeout(() => {
       ulRef.current!.appendChild(firstLi.current);
       ulRef.current!.style.transition = 'none';
       ulRef.current!.style.transform = `translateX(0%)`;
       clearTimeout(tmp);
     }, 400);
-  };
+  }, [imgArr.length])
 
   const pre = () => {
     firstLi.current = ulRef.current!.children[0];
     lastLi.current = ulRef.current!.children[imgArr.length - 1];
     ulRef.current!.insertBefore(lastLi.current, firstLi.current);
     ulRef.current!.style.transition = 'none';
-    ulRef.current!.style.transform = `translateX(${-20}%)`;
+    ulRef.current!.style.transform = `translateX(${-100 / imgArr.length}%)`;
     const tmp = setTimeout(() => {
       ulRef.current!.style.transition = '0.4s';
       ulRef.current!.style.transform = `translateX(0%)`;
@@ -48,7 +48,7 @@ export const Carousel: FC<CarouselProps> = (props) => {
 
   const animation = useCallback(() => {
     timer.current = setInterval(next, timeout);
-  }, [timeout]);
+  }, [timeout, next]);
 
   const getNext = () => {
     clearInterval(timer.current);
@@ -75,9 +75,10 @@ export const Carousel: FC<CarouselProps> = (props) => {
           clearInterval(timer.current);
         }}
         onMouseLeave={animation}
+        style={{width: `${imgArr.length * 100}%`}}
       >
         {imgArr.map((img, idx) => (
-          <li key={img.id}>
+          <li key={img.id} style={{width: `${100 / imgArr.length}%`}}>
             <img src={img.src} alt={img.name} />
           </li>
         ))}
