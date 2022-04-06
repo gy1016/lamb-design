@@ -1,4 +1,3 @@
-import React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { Carousel } from './carousel';
 
@@ -22,7 +21,7 @@ const imgArr = [
     id: 3,
     src: 'http://121.199.160.202/images/3.jpg',
     name: '3'
-  },
+  }
   // {
   //   id: 4,
   //   src: 'http://121.199.160.202/images/4.jpg',
